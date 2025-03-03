@@ -1,5 +1,7 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import VueSelect from 'vue-select';
+import "vue-select/dist/vue-select.css";
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import Api from './plugins/axios' 
@@ -14,6 +16,7 @@ const app = createApp(App)
 const pinia = createPinia()
 app.use(VueSweetalert2);
 app.config.globalProperties.$http = Api  
+app.component('v-select', VueSelect);
 app.component('EasyDataTable', Vue3EasyDataTable);
 app.use(pinia)
 app.use(router)

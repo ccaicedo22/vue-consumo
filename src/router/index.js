@@ -3,7 +3,7 @@ import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import AdminLayout from "../layouts/AdminLayout.vue"; 
 import Authors from "../views/authors/Authors.vue";
-import Blogs from "../views/Posts.vue";
+import Blogs from "../views/posts/Posts.vue";
 
 const routes = [
   { path: "/", component: Home },
