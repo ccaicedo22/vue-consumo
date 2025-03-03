@@ -83,7 +83,12 @@ Se consume la api creada en Laravel 10 ( https://github.com/ccaicedo22/Crud_Api_
       VITE_API_URL=http://127.0.0.1:8000
 
       ```
-6. **Ver en el navegador el proyecto**:
+6. **Levantar el Servidor**:
+- Ejecuta el siguiente comando:
+```bash
+npm run dev
+```
+7. **Ver en el navegador el proyecto**:
     - por lo general la url es:
       ```bash
       http://localhost:5173/

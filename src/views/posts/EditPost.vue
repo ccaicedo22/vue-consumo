@@ -69,6 +69,7 @@ export default {
         post: { ...this.postData },
         authors: [], 
         imagePreview: null,
+        imageName: "",
         };
     },
     watch: {
@@ -97,52 +98,46 @@ export default {
         
         async updatePost() {
             const formData = new FormData();
-
             formData.append('title', this.post.title);
             formData.append('content', this.post.content);
             formData.append('author_id', this.post.author_id);
-
             if (this.post.image && this.post.image instanceof File) {
-                console.log('Añadiendo archivo al FormData:', this.post.image);
                 formData.append('file', this.post.image);
-            } else {
-                console.log('No se ha seleccionado un archivo o el archivo no es válido');
             }
-            console.log('archivo', this.post.image);
+
+            formData.append('_method', 'PUT');
+
             try {
-                const response = await this.$http.put(`/api/posts/${this.post.id}`, formData, {
-                    // headers: {
-                    // 'Content-Type': 'multipart/form-data',  // Dejar que Axios se encargue de esto
-                    // },
-                });
+                    const response = await this.$http.post(`/api/posts/${this.post.id}`,  formData, {
+                            headers: {
+                                'Content-Type': 'multipart/form-data',
+                            }
+                        });
 
-                console.log('Respuesta del servidor:', response.data);
-
-                if (response.data.status === 'success') {
-                    this.$emit('postUpdated', response.data.data);
-                    this.$swal.fire({
-                        title: 'Éxito',
-                        text: 'Post actualizado correctamente',
-                        icon: 'success',
-                    });
-                    this.$emit('closeModal');
-                    this.$emit('refreshPosts');
-                } else {
+                    if (response.data.status === 'success') {
+                        this.$emit('postUpdated', response.data.data);
+                        this.$swal.fire({
+                            title: 'Éxito',
+                            text: 'Post actualizado correctamente',
+                            icon: 'success',
+                        });
+                        this.$emit('closeModal');
+                        this.$emit('refreshPosts');
+                    } else {
+                        this.$swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'No se pudo actualizar el post.',
+                        });
+                    }
+                } catch (error) {
                     this.$swal.fire({
                         icon: 'error',
                         title: 'Error',
-                        text: 'No se pudo actualizar el post.',
+                        text: 'No se pudo actualizar el post. Intenta nuevamente.',
                     });
                 }
-            } catch (error) {
-                console.error('Error al actualizar el post:', error);
-                this.$swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'No se pudo actualizar el post. Intenta nuevamente.',
-                });
-            }
-        },
+            },
 
         async fetchAuthors() {
             try {
