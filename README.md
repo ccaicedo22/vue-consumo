@@ -98,4 +98,4 @@ Se consume la api creada en Laravel 10 ( https://github.com/ccaicedo22/Crud_Api_
 4. Vue Select: Componente de selección personalizable para mejorar la experiencia de selección de opciones.
 5. SweetAlert2: Librería para mostrar alertas y notificaciones personalizadas en la aplicación.
 6. Vue3 Easy Data Table: Componente ligero y estilizado para mostrar tablas de datos de forma dinámica.
-7. Tailwind CSS: Framework de utilidades CSS para un diseño rápido y responsivo sin necesidad de escribir estilos personalizados.
+7. Tailwind CSS: Framework de utilidades CSS para un diseño rápido y responsivo sin necesidad de escribir estilos personalizados. 

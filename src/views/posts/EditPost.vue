@@ -111,9 +111,9 @@ export default {
             console.log('archivo', this.post.image);
             try {
                 const response = await this.$http.put(`/api/posts/${this.post.id}`, formData, {
-                    headers: {
-                    'Content-Type': 'multipart/form-data',  // Dejar que Axios se encargue de esto
-                    },
+                    // headers: {
+                    // 'Content-Type': 'multipart/form-data',  // Dejar que Axios se encargue de esto
+                    // },
                 });
 
                 console.log('Respuesta del servidor:', response.data);
